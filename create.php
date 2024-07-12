@@ -66,7 +66,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       <input type="button" nama="show" href="show-product.php" value="SHOW" href="show-product.php">
     </form> -->
     <div style="margin-top: 10px;">
-    <a style="text-decoration: none; color: black;" href="show-product.php">Show Product</a>
+    <a style="text-decoration: none; color: blue;" href="show-product.php">Show Product</a>
     </div>
 </body>
 </html>
