@@ -52,6 +52,7 @@ if (isset($_POST["submit"])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="style/styles.css">
 </head>
 <body style="text-align: center; margin-top: 200px;">
 <main>
@@ -66,13 +67,13 @@ if (isset($_POST["submit"])) {
       <form action="" method="POST">
         <div class="user-box">
         <li style="list-style-type: none;">
-          <label for="username">Username </label>
+          <label for="username"></label>
           <input type="text" name="username" placeholder="Username" id="username" />
         </li>
         </div>
         <div class="user-box">
         <li style="list-style-type: none; margin-top: 10px;">
-          <label for="password">Password </label>
+          <label for="password"></label>
           <input type="password" name="password" placeholder="Password" id="password" />
         </li>
         </div>

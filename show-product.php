@@ -20,7 +20,7 @@ $result = mysqli_query($conn, "SELECT * FROM product");
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Show-data</title>
-    <link rel="stylesheet" href="show.css">
+    <link rel="stylesheet" href="style/show.css">
 </head>
 <body style="text-align: center; margin-top: 200px;">
 <h1 class="judul">PRODUCT</h1>
@@ -42,7 +42,7 @@ $result = mysqli_query($conn, "SELECT * FROM product");
         <td><?= $row["jenis"]  ?></td>
         <div class="fitur">
         <td class="fitur"><b>
-            <a style="text-decoration: none; color: red;" href="delete.php?id=<?= $row["id"]; ?>" onclick="return confirm('yakin?');">Hapus</a>
+            <a style="text-decoration: none; color: red;" href="delete.php?$id=<?= $row["id"]; ?> "onclick="return confirm('yakin?');">Hapus</a>
             <a style="text-decoration: none; color: green;" href="update.php?$id=<?= $row["id"]; ?>">||  Update</a>
             </b>
         </td>

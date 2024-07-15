@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($conn->query($sql) === true) {
         // Registrasi berhasil, atur session
         $_SESSION['registration_successful'] = true;
-        echo "Registrasi berhasil!";
+        echo "Penambahan Product berhasil!";
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }
