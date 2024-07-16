@@ -20,7 +20,24 @@ $result = mysqli_query($conn, "SELECT * FROM product");
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Show-data</title>
-    <link rel="stylesheet" href="style/show.css">
+    <style>
+        .buttom {
+            margin-top: 20px;
+        }
+
+        .buttom a {
+            text-decoration: none;
+            padding: 9px 4px;
+            border: 1px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .buttom a:hover {
+            border: 1px solid #000; 
+            background-color: #f0f0f0;
+            color: #50C878;
+        }
+    </style>
 </head>
 <body style="text-align: center; margin-top: 200px;">
 <h1 class="judul">PRODUCT</h1>
@@ -51,9 +68,9 @@ $result = mysqli_query($conn, "SELECT * FROM product");
 <?php endwhile; ?>
 </table>
 
-    <div style="text-decoration: none; margin-top: 20px;">
+    <div class="buttom" style="margin-top: 20px;">
     <a style="text-decoration: none;" href="create.php">Create Product</a>
-    <a style="text-decoration: none; color: black;" href="index.php">|| Logout</a>
+    <a style="text-decoration: none;" href="index.php">Logout</a>
     </div>
 </body>
 </html>

@@ -1,19 +1,16 @@
-/* unvisited link */
-a:link {
-    color: red;
-  }
-  
-  /* visited link */
-  a:visited {
-    color: rgb(79, 0, 207);
-  }
-  
-  /* mouse over link */
-  a:hover {
-    color: rgb(255, 0, 0);
-  }
-  
-  /* selected link */
-  a:active {
-    color: blue;
-  }
+.buttom {
+  margin-top: 20px;
+}
+
+.buttom a {
+  text-decoration: none;
+  padding: 10px 15px;
+  border: 1px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.buttom a:hover {
+  border: 1px solid #000; /* Tambahkan border hitam saat hover */
+  background-color: #f0f0f0; /* Tambahkan background abu-abu saat hover */
+  color: #000; /* Ubah warna teks saat hover */
+}
