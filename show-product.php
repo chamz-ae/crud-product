@@ -19,7 +19,7 @@ $result = mysqli_query($conn, "SELECT * FROM product");
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Show-data</title>
+    <title>DATA</title>
     <style>
         .buttom {
             margin-top: 20px;
