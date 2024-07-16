@@ -4,11 +4,11 @@ include 'conn.php';
 function query($query) {
     global $conn;
     $result = mysqli_query($conn, $query);
-    $row = [];
-    while( $row = mysqli_fetch_assoc($result) ) {
-        $row[] = $row;
+    $rows = [];
+    while ($row = mysqli_fetch_assoc($result)) {
+        $rows[] = $row;
     }
-    return $row;
+    return $rows;
 }
 
 function hapus($id) {
@@ -21,19 +21,23 @@ function hapus($id) {
         echo "Error: " . $conn->error; // Untuk debugging
         return false;
     }
-
 }
 
-function ubah($id) {
+function ubah($data) {
     global $conn;
-    $sql = "UPDATE FROM product WHERE id = $id";
+    
+    $id = $data['id'];
+    $nama = htmlspecialchars($data['nama']);
+    $product = htmlspecialchars($data['product']);
+    $jenis = htmlspecialchars($data['jenis']);
 
-    if ($conn->query($sql) === TRUE) {
-        return true;
-    } else {
-        echo "Error: " . $conn->error; // Untuk debugging
-        return false;
-    }
+    $query = "UPDATE product SET 
+                nama = '$nama',
+                product = '$product',
+                jenis = '$jenis'
+            WHERE id = $id";
 
+    mysqli_query($conn, $query);
+
+    return mysqli_affected_rows($conn);
 }
-?>

@@ -1,15 +1,18 @@
 <?php
 require 'function.php';
-include('conn.php');
+require 'conn.php';
 
-if (isset($_GET['$id'])) {
-    $id = $_GET['$id'];
+$pdc = null;
 
-// query nya cuk
-$pdc = query("SELECT * FROM product WHERE id = $id");
-var_dump($pdc);
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+    $pdcQuery = "SELECT * FROM product WHERE id = $id";
+    $pdcResult = mysqli_query($conn, $pdcQuery);
+    $pdc = mysqli_fetch_array($pdcResult);
+}
 
-if (ubah($id)) {
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (ubah($_POST)) {
         echo "
             <script>
                 alert('Data berhasil diubah');
@@ -32,27 +35,31 @@ if (ubah($id)) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>create-product</title>
+    <title>Update Product</title>
 </head>
 <body style="text-align: center; margin-top: 200px;">
-<h2>Create New Product</h2>
+<h2>Update Product</h2>
+<?php if ($pdc): ?>
     <form action="" method="POST">
-    <label for="nama">nama:</label>
-    <input type="text" id="nama" name="nama" required value=""><br><br>
-  
-    <label for="product">product:</label>
-    <input type="text" id="product" name="product" required value="type"><br><br>
-  
-    <input type="radio" id="Makanan" name="jenis" value="Makanan"> <label for="Makanan">Makanan</label><br>
+        <input type="hidden" name="id" value="<?= $pdc['id']; ?>" >
 
-    <input type="radio" id="Minuman" name="jenis" value="Minuman"> <label for="Minuman">Minuman</label><br>
+        <label for="nama">Nama:</label>
+        <input type="text" id="nama" name="nama" required value="<?= $pdc['nama']; ?>"><br><br>
 
-    <input type="submit" name="Create" value="Create">
+        <label for="product">Product:</label>
+        <input type="text" id="product" name="product" required value="<?= $pdc['product']; ?>"><br><br>
+
+        <input type="radio" id="Makanan" name="jenis" value="Makanan" <?= $pdc['jenis'] == 'Makanan' ? 'checked' : ''; ?>> <label for="Makanan">Makanan</label><br>
+        <input type="radio" id="Minuman" name="jenis" value="Minuman" <?= $pdc['jenis'] == 'Minuman' ? 'checked' : ''; ?>> <label for="Minuman">Minuman</label><br><br>
+
+        <input type="submit" name="Update" value="Update">
     </form>
+<?php else: ?>
+    <p>No product found with the given ID.</p>
+<?php endif; ?>
 
-    <!-- <form action="show-product.php" method="GET">
-      <input type="button" nama="show" href="show-product.php" value="SHOW" href="show-product.php">
-    </form> -->
-    <div style="margin-top: 10px;">
+<div style="margin-top: 10px;">
     <a style="text-decoration: none; color: blue;" href="show-product.php">Show Product</a>
-    </div>
+</div>
+</body>
+</html>
