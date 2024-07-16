@@ -14,7 +14,7 @@ $result = mysqli_query($conn, "SELECT * FROM product");
 
 ?>  
 
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -43,7 +43,7 @@ $result = mysqli_query($conn, "SELECT * FROM product");
         <div class="fitur">
         <td class="fitur"><b>
             <a style="text-decoration: none; color: red;" href="delete.php?$id=<?= $row["id"]; ?> "onclick="return confirm('yakin?');">Hapus</a>
-            <a style="text-decoration: none; color: green;" href="update.php?$id=<?= $row["id"]; ?>">||  Update</a>
+            <a style="text-decoration: none; color: green;" href="update.php?id=<?= $row["id"]; ?>">||  Update</a>
             </b>
         </td>
         </div>
