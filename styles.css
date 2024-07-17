@@ -7,14 +7,16 @@ html, body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #333;
+    background: #44A08D;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #093637, #44A08D);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #093637, #44A08D);
 }
 
 .login-box {
     position: relative;
     width: 450px;
     padding: 70px;
-    background: rgba(0, 0, 0, 0.5);
+    background: linear-gradient(to right, #093637, #44A08D);
     box-sizing: border-box;
     box-shadow: 0 15px 25px rgba(0, 0, 0, 0.6);
     border-radius: 10px;
