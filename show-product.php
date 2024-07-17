@@ -20,7 +20,8 @@ $result = mysqli_query($conn, "SELECT * FROM product");
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DATA</title>
-    <style>
+    <link rel="stylesheet" href="show.css">
+    <!-- <style>
         .buttom {
             margin-top: 20px;
         }
@@ -37,7 +38,7 @@ $result = mysqli_query($conn, "SELECT * FROM product");
             background-color: #f0f0f0;
             color: #50C878;
         }
-    </style>
+    </style> -->
 </head>
 <body style="text-align: center; margin-top: 200px;">
 <h1 class="judul">PRODUCT</h1>
@@ -69,8 +70,13 @@ $result = mysqli_query($conn, "SELECT * FROM product");
 </table>
 
     <div class="buttom" style="margin-top: 20px;">
-    <a style="text-decoration: none;" href="create.php">Create Product</a>
-    <a style="text-decoration: none;" href="index.php">Logout</a>
+    <a class="btn" style="text-decoration: none;" href="create.php">Create Product</a>
+    <a class="btn" style="text-decoration: none; margin-left: 20px;" href="index.php">Logout</a>
     </div>
+
+    <!-- <div style="margin-top: 25px;">
+    <a class="btn" href="create.php">Create Product</>
+    <a style="margin-left: 20px; " class="btn" href="index.php">LogOut</>
+    </div> -->
 </body>
 </html>
