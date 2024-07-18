@@ -5,7 +5,7 @@ function query($query) {
     global $conn;
     $result = mysqli_query($conn, $query);
     $rows = [];
-    while ($row = mysqli_fetch_assoc($result)) {
+    while( $row = mysqli_fetch_assoc($result) ) {
         $rows[] = $row;
     }
     return $rows;
@@ -41,3 +41,17 @@ function ubah($data) {
 
     return mysqli_affected_rows($conn);
 }
+
+function cari($keyword) {
+    global $conn;
+    $query = "SELECT * FROM product
+                WHERE
+                nama LIKE '%$keyword%' OR
+                product LIKE '%$keyword%' OR
+                jenis LIKE '%$keyword%'
+
+            ";
+    $data = mysqli_query($conn, $query);
+    $data = mysqli_fetch_assoc($data);
+    return $data;
+} 

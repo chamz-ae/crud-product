@@ -150,7 +150,7 @@ html, body {
         <div class="user-box">
         <li style="list-style-type: none;">
           <label for="username"></label>
-          <input type="text" name="username" placeholder="Username" id="username" />
+          <input type="text" name="username" autocomplete="off" placeholder="Username" id="username" />
         </li>
         </div>
         <div class="user-box">
