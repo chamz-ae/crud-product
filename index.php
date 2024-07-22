@@ -1,5 +1,6 @@
 <?php
 include('conn.php');
+session_start();
 
 
 if (isset($_POST["submit"])) {
@@ -30,8 +31,8 @@ if (isset($_POST["submit"])) {
             // cek password
             if (password_verify($password, $passwordDB)) {
               // nek bener, lanjut halaman
-              $_SESSION['username'] = $username; // Set session untuk pengguna yang login
-              header("location: show-product.php");
+              $_SESSION["username"] = $username; // Set session untuk pengguna yang login
+              header("Location: show-product.php");
               exit;
             } else {
               // nek salah, tampilkan salah
@@ -150,7 +151,7 @@ html, body {
         <div class="user-box">
         <li style="list-style-type: none;">
           <label for="username"></label>
-          <input type="text" name="username" autocomplete="off" placeholder="Username" id="username" />
+          <input type="text" name="username" autocomplete="off" autofocus placeholder="Username" id="username" />
         </li>
         </div>
         <div class="user-box">

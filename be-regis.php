@@ -1,4 +1,17 @@
 <?php
+session_start(); // Mulai session
+
+if (isset($_POST["register"])) {
+    // Lakukan proses registrasi di sini
+
+    // Setelah registrasi berhasil, misalnya Anda ingin mengatur session
+    $_SESSION['registration_successful'] = true;
+
+    // Redirect ke halaman lain atau tampilkan pesan sukses
+    header("location: be-regis.php");
+    exit; // Penting untuk menghentikan eksekusi kode setelah melakukan redirect
+}
+
 include('conn.php');
 
 

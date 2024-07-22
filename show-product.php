@@ -1,4 +1,11 @@
 <?php
+session_start();
+if( !isset($_SESSION['username']) ) {
+    header("Location: index.php");
+    exit;
+}
+$username = $_SESSION['username'];
+
 require 'conn.php';
 require 'function.php';
 
@@ -23,6 +30,9 @@ if (isset($_POST["cari"])) {
 </head>
 <body style="text-align: center; margin-top: 72px;">
 <h1 class="judul">PRODUCT</h1>
+<h1 class="text-5xl font-bold mb-8">
+            Selamat Datang, <?php echo $username; ?>!
+        </h1>
 
 <form action="" method="post">
     <input type="text" name="keyword" placeholder="Serah Kamu Lahh" size="40" autofocus autocomplete="off">
@@ -74,7 +84,7 @@ if (isset($_POST["cari"])) {
 
 <div class="buttom" style="margin-top: 20px;">
     <a class="btn" style="text-decoration: none;" href="create.php">Create Product</a>
-    <a class="btn" style="text-decoration: none; margin-left: 20px;" href="index.php">Logout</a>
+    <a class="btn" style="text-decoration: none; margin-left: 20px;" href="logout.php">Logout</a>
 </div>
 </body>
 </html>
