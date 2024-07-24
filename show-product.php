@@ -10,14 +10,23 @@ require 'conn.php';
 require 'function.php';
 
 // ambil data dari tabel product/query data product
+// print_r($conn);
 $result = mysqli_query($conn, "SELECT * FROM product");
-$product = query("SELECT * FROM product");
+// $product = query("SELECT * FROM product");
+// $data = mysqli_fetch_assoc($result);
+
+// print_r($data); die;
 
 // KLO MISAL TOMBOL DITEKAN
 if (isset($_POST["cari"])) {
     $product = cari($_POST["keyword"]);
 }
 
+// pagination
+// konfigurasi
+// $jumlahDataPerHalaman = 2;
+// $jumlahData = count(query("SELECT * FROM product"));
+// $jumlahHalaman = $jumlahData / $jumlahDataPerHalaman;
 ?>
 
 <!DOCTYPE html> 
@@ -49,7 +58,6 @@ if (isset($_POST["cari"])) {
         <th>jenis</th>
         <th>Fitur</th>
     </tr>
-
 <?php if (empty($product)) { ?>
     <?php if ($row = mysqli_fetch_assoc($result)) : do { ?>
     <tr>
@@ -66,6 +74,12 @@ if (isset($_POST["cari"])) {
     </tr>
     <?php } while ($row = mysqli_fetch_assoc($result)); endif; ?>
 <?php } else { ?>
+    <?php $data = "SELECT * FROM product";
+    
+    $data = mysqli_query($conn, $data);
+    $data = mysqli_fetch_assoc($data);
+    // print_r($data); die;
+    ?>
     <tr>
         <td><?= $product['id']; ?></td>
         <td><?= $product['nama']; ?></td>
@@ -73,13 +87,12 @@ if (isset($_POST["cari"])) {
         <td><?= $product['jenis']; ?></td>
         <td class="fitur">
             <b>
-                <a style="text-decoration: none; color: red;" href="delete.php?id=<?= $product['id']; ?>" onclick="return confirm('yakin?');">Hapus</a>
+                <a style="text-decoration: none; color: red;" href="delete.php?$id=<?= $product['id']; ?>" onclick="return confirm('yakin?');">Hapus</a>
                 <a style="text-decoration: none; color: green;" href="update.php?id=<?= $product['id']; ?>">||  Update</a>
             </b>
         </td>
     </tr>
 <?php } ?>
-
 </table>
 
 <div class="buttom" style="margin-top: 20px;">

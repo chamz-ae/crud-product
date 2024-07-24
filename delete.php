@@ -23,4 +23,7 @@ if (isset($_GET['$id'])) {
         ";
     }
 }
+
+header("location: show-product.php");
+exit;
 ?>
