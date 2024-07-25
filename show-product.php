@@ -29,28 +29,30 @@ if (isset($_POST["cari"])) {
 // $jumlahHalaman = $jumlahData / $jumlahDataPerHalaman;
 ?>
 
-<!DOCTYPE html> 
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DATA</title>
     <link rel="stylesheet" href="show.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body style="text-align: center; margin-top: 72px;">
 <h1 class="judul">PRODUCT</h1>
 <h1 class="text-5xl font-bold mb-8">
-            Selamat Datang, <?php echo $username; ?>!
-        </h1>
+    Selamat Datang, <?php echo $username; ?>!
+</h1>
 
-<form action="" method="post">
-    <input type="text" name="keyword" placeholder="Serah Kamu Lahh" size="40" autofocus autocomplete="off">
+<form action="" method="post" id="searchForm">
+    <input type="text" name="keyword" id="keyword" placeholder="Serah Kamu Lahh" size="40" autofocus autocomplete="off">
     <button type="submit" name="cari">Search!</button>
 </form>
 <br>
 <br>
 
-<table style="text-align: center; margin: 0 auto;" class="tabel" border="1" cellpadding="10" cellspacing="0">
+<table style="text-align: center; margin: 0 auto;" class="tabel" border="1" cellpadding="10" cellspacing="0" id="productTable">
     <tr>
         <th>NO.</th>
         <th>nama</th>
@@ -58,7 +60,7 @@ if (isset($_POST["cari"])) {
         <th>jenis</th>
         <th>Fitur</th>
     </tr>
-<?php if (empty($product)) { ?>
+    <?php if (empty($product)) { ?>
     <?php if ($row = mysqli_fetch_assoc($result)) : do { ?>
     <tr>
         <td><?= $row["id"] ?></td>
@@ -99,5 +101,36 @@ if (isset($_POST["cari"])) {
     <a class="btn" style="text-decoration: none;" href="create.php">Create Product</a>
     <a class="btn" style="text-decoration: none; margin-left: 20px;" href="logout.php">Logout</a>
 </div>
+
+<script>
+$(document).ready(function(){
+    $('#keyword').on('input', function() {
+        var keyword = $(this).val();
+        $.ajax({
+            url: 'search.php',
+            type: 'POST',
+            data: { keyword: keyword },
+            success: function(data) {
+                var products = JSON.parse(data);
+                var tableContent = '<tr><th>NO.</th><th>nama</th><th>product</th><th>jenis</th><th>Fitur</th></tr>';
+                $.each(products, function(index, product) {
+                    tableContent += '<tr>';
+                    tableContent += '<td>' + product.id + '</td>';
+                    tableContent += '<td>' + product.nama + '</td>';
+                    tableContent += '<td>' + product.product + '</td>';
+                    tableContent += '<td>' + product.jenis + '</td>';
+                    tableContent += '<td class="fitur"><b>';
+                    tableContent += '<a style="text-decoration: none; color: red;" href="delete.php?id=' + product.id + '" onclick="return confirm(\'yakin?\');">Hapus</a>';
+                    tableContent += '<a style="text-decoration: none; color: green;" href="update.php?id=' + product.id + '">||  Update</a>';
+                    tableContent += '</b></td>';
+                    tableContent += '</tr>';
+                });
+                $('#productTable').html(tableContent);
+            }
+        });
+    });
+});
+</script>
+
 </body>
 </html>
