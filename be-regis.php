@@ -23,8 +23,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['email'];
 
     // Melakukan validasi data (contoh: minimal panjang username dan password)
-    if (strlen($username) < 2 || strlen($password) < 4) {
-        echo "Username harus minimal 2 karakter dan password minimal 4 karakter.";
+    if (strlen($username) < 2 || strlen($password) < 3) {
+        echo "Username harus minimal 2 karakter dan password minimal 3 karakter.";
         exit;
     }
 

@@ -120,7 +120,7 @@ $(document).ready(function(){
                     tableContent += '<td>' + product.product + '</td>';
                     tableContent += '<td>' + product.jenis + '</td>';
                     tableContent += '<td class="fitur"><b>';
-                    tableContent += '<a style="text-decoration: none; color: red;" href="delete.php?id=' + product.id + '" onclick="return confirm(\'yakin?\');">Hapus</a>';
+                    tableContent += '<a style="text-decoration: none; color: red;" href="delete.php?$id=' + product.id + '" onclick="return confirm(\'yakin?\');">Hapus</a>';
                     tableContent += '<a style="text-decoration: none; color: green;" href="update.php?id=' + product.id + '">||  Update</a>';
                     tableContent += '</b></td>';
                     tableContent += '</tr>';
